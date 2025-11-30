@@ -139,61 +139,75 @@ export function HeroBackground({
     <div className="absolute inset-0 overflow-hidden">
       {/* Shapes */}
       {shapes.map((shape) => (
-        <motion.div
+        <div
           key={`shape-${shape.id}`}
           className={getShapeClasses(shape.type, isDark)}
           style={{
+            position: 'absolute',
             width: shape.size,
             height: shape.size,
             left: `${shape.x}%`,
             top: `${shape.y}%`,
             opacity: shape.opacity,
-            x: mousePosition.x,
-            y: mousePosition.y,
           }}
-          animate={{
-            y: [0, -30, 0],
-            x: [0, 15, 0],
-            rotate: [0, 180, 360],
-            scale: [1, 1.1, 1],
-          }}
-          transition={{
-            duration: shape.duration,
-            delay: shape.delay,
-            repeat: Infinity,
-            repeatType: 'loop',
-            ease: 'easeInOut',
-          }}
-        />
+        >
+          <motion.div
+            style={{
+              width: '100%',
+              height: '100%',
+              x: mousePosition.x,
+              y: mousePosition.y,
+            }}
+            animate={{
+              y: [0, -30, 0],
+              x: [0, 15, 0],
+              rotate: [0, 180, 360],
+              scale: [1, 1.1, 1],
+            }}
+            transition={{
+              duration: shape.duration,
+              delay: shape.delay,
+              repeat: Infinity,
+              repeatType: 'loop',
+              ease: 'easeInOut',
+            }}
+          />
+        </div>
       ))}
 
       {/* Keywords */}
       {keywordElements.map((keyword) => (
-        <motion.div
+        <div
           key={`keyword-${keyword.id}`}
           className={getKeywordClasses(isDark, keyword.size)}
           style={{
+            position: 'absolute',
             left: `${keyword.x}%`,
             top: `${keyword.y}%`,
-            x: mousePosition.x * 0.5,
-            y: mousePosition.y * 0.5,
-          }}
-          animate={{
-            y: [0, -40, 0],
-            x: [0, Math.random() * 20 - 10, 0],
-            rotate: [0, 5, -5, 0],
-            scale: [1, 1.05, 1],
-          }}
-          transition={{
-            duration: keyword.duration,
-            delay: keyword.delay,
-            repeat: Infinity,
-            repeatType: 'loop',
-            ease: 'easeInOut',
           }}
         >
-          {keyword.text}
-        </motion.div>
+          <motion.div
+            style={{
+              x: mousePosition.x * 0.5,
+              y: mousePosition.y * 0.5,
+            }}
+            animate={{
+              y: [0, -40, 0],
+              x: [0, Math.random() * 20 - 10, 0],
+              rotate: [0, 5, -5, 0],
+              scale: [1, 1.05, 1],
+            }}
+            transition={{
+              duration: keyword.duration,
+              delay: keyword.delay,
+              repeat: Infinity,
+              repeatType: 'loop',
+              ease: 'easeInOut',
+            }}
+          >
+            {keyword.text}
+          </motion.div>
+        </div>
       ))}
 
       {/* Subtle radial gradient overlay for depth */}

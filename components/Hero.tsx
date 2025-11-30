@@ -32,36 +32,40 @@ export function Hero() {
           </p>
         </motion.div>
 
-        <motion.div
-          variants={staggerList}
-          initial="initial"
-          animate="animate"
-          className="mt-10 flex flex-col sm:flex-row items-center justify-center gap-4"
-        >
-          <motion.div variants={fadeUp}>
-            <Link href="#projects" className="inline-block px-8 py-3 bg-accent text-white rounded-lg font-semibold hover:opacity-90 transition-opacity">
-              View Work
-            </Link>
-          </motion.div>
-          <motion.div variants={fadeUp}>
-            <Link href="#contact" className="inline-block px-8 py-3 border border-gray-300 dark:border-gray-700 rounded-lg font-semibold hover:bg-surface transition-colors">
-              Let's Talk
-            </Link>
-          </motion.div>
-        </motion.div>
-
-        <motion.div
-          variants={staggerList}
-          initial="initial"
-          animate="animate"
-          className="mt-16 flex flex-col sm:flex-row items-center justify-center gap-8 md:gap-12"
-        >
-          {stats.map((stat) => (
-            <motion.div key={stat.label} variants={fadeUp} className="text-center">
-              <div className="mt-1 text-sm text-muted">{stat.label}</div>
+        <div className="mt-10 flex flex-col sm:flex-row items-center justify-center gap-4">
+          <motion.div
+            variants={staggerList}
+            initial="initial"
+            animate="animate"
+          >
+            <motion.div variants={fadeUp}>
+              <Link href="#projects" className="inline-block px-8 py-3 bg-accent text-white rounded-lg font-semibold hover:opacity-90 transition-opacity">
+                View Work
+              </Link>
             </motion.div>
-          ))}
-        </motion.div>
+            <motion.div variants={fadeUp}>
+              <Link href="#contact" className="inline-block px-8 py-3 border border-gray-300 dark:border-gray-700 rounded-lg font-semibold hover:bg-surface transition-colors">
+                Let's Talk
+              </Link>
+            </motion.div>
+          </motion.div>
+        </div>
+
+        <div className="mt-16 flex flex-col sm:flex-row items-center justify-center gap-8 md:gap-12">
+          <motion.div
+            variants={staggerList}
+            initial="initial"
+            animate="animate"
+          >
+            {stats.map((stat) => (
+              <div key={stat.label} className="text-center">
+                <motion.div variants={fadeUp}>
+                  <div className="mt-1 text-sm text-muted">{stat.label}</div>
+                </motion.div>
+              </div>
+            ))}
+          </motion.div>
+        </div>
       </div>
     </section>
   )
