@@ -1,0 +1,71 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Light theme (default) */
+:root {
+  --bg: #ffffff;
+  --surface: #f8f9fa;
+  --muted: #6b7280;
+  --accent: #0f6ffc;
+  --accent-2: #6c5ce7;
+}
+
+/* Dark theme */
+html[data-theme='dark'],
+html.dark {
+  --bg: #0a0a0a;
+  --surface: #111214;
+  --muted: #a1a1aa;
+  --accent: #4ea1ff;
+  --accent-2: #8b78f6;
+}
+
+@media (prefers-color-scheme: dark) {
+  html:not([data-theme='light']) {
+    --bg: #0a0a0a;
+    --surface: #111214;
+    --muted: #a1a1aa;
+    --accent: #4ea1ff;
+    --accent-2: #8b78f6;
+  }
+}
+
+html,
+body {
+  height: 100%;
+  background-color: var(--bg);
+  color: #1f2937;
+}
+
+html.dark,
+html[data-theme='dark'] {
+  color: #e5e7eb;
+}
+
+body {
+  font-family: Inter, system-ui, -apple-system, sans-serif;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Smooth scrolling */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Focus visible */
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+
+/* Radial gradients for background animation */
+.bg-radial-gradient {
+  background: radial-gradient(circle at center, var(--tw-gradient-stops));
+}
+
+.bg-radial-to-r {
+  background: radial-gradient(to right, var(--tw-gradient-stops));
+}
