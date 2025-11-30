@@ -117,32 +117,36 @@ export function BackgroundAnimation({
 
       {/* Animated shapes */}
       {shapes.map((shape) => (
-        <motion.div
+        <div
           key={shape.id}
           className={`${getShapeClasses(shape.type, isDark)} ${gradients[shape.id % gradients.length]}`}
-          style={{
-            width: shape.size,
-            height: shape.size,
-            left: shape.left,
-            top: shape.top,
-            opacity: shape.opacity,
-            filter: isDark ? 'blur(40px)' : 'blur(35px)'
-          }}
-          variants={shapeVariants}
-          animate="animate"
-          custom={{
-            duration: shape.duration,
-            rotation: shape.rotation
-          }}
-          initial={{
-            y: 0,
-            rotate: 0,
-            scale: 1
-          }}
-          transition={{
-            delay: shape.delay
-          }}
-        />
+        >
+          <motion.div
+            style={{
+              width: shape.size,
+              height: shape.size,
+              left: shape.left,
+              top: shape.top,
+              opacity: shape.opacity,
+              filter: isDark ? 'blur(40px)' : 'blur(35px)',
+              position: 'absolute'
+            }}
+            variants={shapeVariants}
+            animate="animate"
+            custom={{
+              duration: shape.duration,
+              rotation: shape.rotation
+            }}
+            initial={{
+              y: 0,
+              rotate: 0,
+              scale: 1
+            }}
+            transition={{
+              delay: shape.delay
+            }}
+          />
+        </div>
       ))}
 
       {/* Subtle radial overlay for depth */}
